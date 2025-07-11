@@ -1160,9 +1160,6 @@
     <ClCompile Include="ui\Winvar.cpp">
       <Filter>Ui</Filter>
     </ClCompile>
-    <ClCompile Include="idlib\precompiled.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
     <ClCompile Include="cm\CollisionModel.cpp">
       <Filter>CM</Filter>
     </ClCompile>

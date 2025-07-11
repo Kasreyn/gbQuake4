@@ -261,6 +261,24 @@
     <ClInclude Include="idlib\algorithms\MultifieldSort.h">
       <Filter>idLib\Algorithms</Filter>
     </ClInclude>
+    <ClInclude Include="idlib\math\Simd_SSE.h">
+      <Filter>idLib\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="idlib\math\Simd_MMX.h">
+      <Filter>idLib\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="idlib\math\Simd_AltiVec.h">
+      <Filter>idLib\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="idlib\math\Simd_SSE2.h">
+      <Filter>idLib\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="idlib\math\Simd_SSE3.h">
+      <Filter>idLib\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="idlib\math\Simd_3DNow.h">
+      <Filter>idLib\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="idlib\Base64.cpp">
@@ -425,13 +443,23 @@
     <ClCompile Include="idlib\hashing\MD5.cpp">
       <Filter>idLib\Hashing</Filter>
     </ClCompile>
-    <ClCompile Include="idlib\precompiled.cpp">
-      <Filter>idLib</Filter>
+    <ClCompile Include="idlib\math\Simd_SSE.cpp">
+      <Filter>idLib\Math</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuildStep Include="idlib\precompiled.h">
-      <Filter>idLib</Filter>
-    </CustomBuildStep>
+    <ClCompile Include="idlib\math\Simd_MMX.cpp">
+      <Filter>idLib\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="idlib\math\Simd_SSE2.cpp">
+      <Filter>idLib\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="idlib\math\Simd_SSE3.cpp">
+      <Filter>idLib\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="idlib\math\Simd_AltiVec.cpp">
+      <Filter>idLib\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="idlib\math\Simd_3DNow.cpp">
+      <Filter>idLib\Math</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

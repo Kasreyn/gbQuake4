@@ -37,10 +37,13 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{49BEC5C6-B964-417A-851E-808886B57400}</ProjectGuid>
     <RootNamespace>idLib</RootNamespace>
-    <SccProjectName>Perforce Project</SccProjectName>
+    <SccProjectName>
+    </SccProjectName>
     <SccAuxPath />
-    <SccLocalPath>..</SccLocalPath>
-    <SccProvider>MSSCCI:NXN alienbrain</SccProvider>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -49,7 +52,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v100</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_GOG|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -85,7 +88,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v100</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -139,7 +142,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>mssdk/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>mssdk/include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;Q4SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -392,8 +395,13 @@
     <ClInclude Include="idlib\LexerFactory.h" />
     <ClInclude Include="idlib\Lib.h" />
     <ClInclude Include="idlib\MapFile.h" />
+    <ClInclude Include="idlib\math\Simd_3DNow.h" />
+    <ClInclude Include="idlib\math\Simd_AltiVec.h" />
+    <ClInclude Include="idlib\math\Simd_MMX.h" />
+    <ClInclude Include="idlib\math\Simd_SSE.h" />
+    <ClInclude Include="idlib\math\Simd_SSE2.h" />
+    <ClInclude Include="idlib\math\Simd_SSE3.h" />
     <ClInclude Include="idlib\Parser.h" />
-    <ClInclude Include="precompiled.h" />
     <ClInclude Include="idlib\rvHeap.h" />
     <ClInclude Include="idlib\rvHeapArena.h" />
     <ClInclude Include="idlib\rvMemSys.h" />
@@ -490,6 +498,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_GOG|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="idlib\mapfile.cpp" />
+    <ClCompile Include="idlib\math\Simd_3DNow.cpp" />
+    <ClCompile Include="idlib\math\Simd_AltiVec.cpp" />
+    <ClCompile Include="idlib\math\Simd_MMX.cpp" />
+    <ClCompile Include="idlib\math\Simd_SSE.cpp" />
+    <ClCompile Include="idlib\math\Simd_SSE2.cpp" />
+    <ClCompile Include="idlib\math\Simd_SSE3.cpp" />
     <ClCompile Include="idlib\Parser.cpp" />
     <ClCompile Include="idlib\rvHeap.cpp" />
     <ClCompile Include="idlib\rvHeapArena.cpp" />

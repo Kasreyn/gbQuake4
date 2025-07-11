@@ -159,12 +159,12 @@ public:
 #define	WIN32_LEAN_AND_MEAN
 #else
 // non-dedicated includes MFC and sets windows version here
-#include "../tools/comafx/StdAfx.h"			// this will go away when MFC goes away
+#include "tools/comafx/StdAfx.h"			// this will go away when MFC goes away
 #endif
 
 #else
 
-//#include "../tools/comafx/StdAfx.h"
+//#include "tools/comafx/StdAfx.h"
 
 #endif
 
@@ -212,34 +212,34 @@ public:
 //-----------------------------------------------------
 
 // non-portable system services
-#include "../sys/sys_public.h"
+#include "sys/sys_public.h"
 
 // id lib
-#include "../idlib/Lib.h"
+#include "idlib/Lib.h"
 
 // framework
-#include "../framework/BuildVersion.h"
-#include "../framework/BuildDefines.h"
-#include "../framework/Licensee.h"
-#include "../framework/CmdSystem.h"
-#include "../framework/CVarSystem.h"
-#include "../framework/Common.h"
-#include "../framework/File.h"
-#include "../framework/FileSystem.h"
-#include "../framework/UsercmdGen.h"
+#include "framework/BuildVersion.h"
+#include "framework/BuildDefines.h"
+#include "framework/Licensee.h"
+#include "framework/CmdSystem.h"
+#include "framework/CVarSystem.h"
+#include "framework/Common.h"
+#include "framework/File.h"
+#include "framework/FileSystem.h"
+#include "framework/UsercmdGen.h"
 
 // decls
-#include "../framework/DeclManager.h"
-#include "../framework/DeclTable.h"
-#include "../framework/DeclSkin.h"
-#include "../framework/DeclEntityDef.h"
-#include "../framework/DeclAF.h"
+#include "framework/DeclManager.h"
+#include "framework/DeclTable.h"
+#include "framework/DeclSkin.h"
+#include "framework/DeclEntityDef.h"
+#include "framework/DeclAF.h"
 // RAVEN BEGIN
 // jscott: new decl types
-#include "../framework/DeclPlayerModel.h"
-#include "../framework/declMatType.h"
-#include "../framework/declLipSync.h"
-#include "../framework/declPlayback.h"
+#include "framework/DeclPlayerModel.h"
+#include "framework/declMatType.h"
+#include "framework/declLipSync.h"
+#include "framework/declPlayback.h"
 // RAVEN END
 
 // We have expression parsing and evaluation code in multiple places:
@@ -251,67 +251,67 @@ const int MAX_EXPRESSION_REGISTERS = 4096;
 const float MAX_BOUND_SIZE = 65536.0f;
 
 // renderer
-#include "../renderer/qgl.h"
-#include "../renderer/Cinematic.h"
-#include "../renderer/Material.h"
-#include "../renderer/Model.h"
-#include "../renderer/ModelManager.h"
-#include "../renderer/RenderSystem.h"
-#include "../renderer/RenderWorld.h"
+#include "renderer/qgl.h"
+#include "renderer/Cinematic.h"
+#include "renderer/Material.h"
+#include "renderer/Model.h"
+#include "renderer/ModelManager.h"
+#include "renderer/RenderSystem.h"
+#include "renderer/RenderWorld.h"
 
 // sound engine
-#include "../sound/sound.h"
+#include "sound/sound.h"
 
 // RAVEN BEGIN
 // jscott: Effects system interface
-#include "../bse/BSEInterface.h"
+#include "bse/BSEInterface.h"
 // RAVEN END
 
 // asynchronous networking
-#include "../framework/async/NetworkSystem.h"
+#include "framework/async/NetworkSystem.h"
 
 // user interfaces
-#include "../ui/ListGUI.h"
-#include "../ui/UserInterface.h"
+#include "ui/ListGUI.h"
+#include "ui/UserInterface.h"
 
 // collision detection system
-#include "../cm/CollisionModel.h"
+#include "cm/CollisionModel.h"
 
 // AAS files and manager
-#include "../aas/AASFile.h"
-#include "../aas/AASFileManager.h"
+#include "aas/AASFile.h"
+#include "aas/AASFileManager.h"
 
 // game
-#include "../game/Game.h"
+#include "game/Game.h"
 
 //-----------------------------------------------------
 
 #ifdef GAME_DLL
-#include "../game/Game_local.h"
+#include "game/Game_local.h"
 #endif
 
 #ifndef Q4SDK
 
-#include "../framework/DemoChecksum.h"
+#include "framework/DemoChecksum.h"
 
 // framework
-#include "../framework/Compressor.h"
-#include "../framework/EventLoop.h"
-#include "../framework/KeyInput.h"
-#include "../framework/EditField.h"
-#include "../framework/Console.h"
-#include "../framework/DemoFile.h"
-#include "../framework/Session.h"
+#include "framework/Compressor.h"
+#include "framework/EventLoop.h"
+#include "framework/KeyInput.h"
+#include "framework/EditField.h"
+#include "framework/Console.h"
+#include "framework/DemoFile.h"
+#include "framework/Session.h"
 
 // asynchronous networking
-#include "../framework/async/AsyncNetwork.h"
+#include "framework/async/AsyncNetwork.h"
 
 // The editor entry points are always declared, but may just be
 // stubbed out on non-windows platforms.
-#include "../tools/edit_public.h"
+#include "tools/edit_public.h"
 
 // Compilers for map, model, video etc. processing.
-#include "../tools/compilers/compiler_public.h"
+#include "tools/compilers/compiler_public.h"
 
 #endif /* !Q4SDK */
 
@@ -319,13 +319,13 @@ const float MAX_BOUND_SIZE = 65536.0f;
 
 // RAVEN BEGIN
 // jsinger: add AutoPtr and text-to-binary compiler support
-#include "AutoPtr.h"
-#include "LexerFactory.h"
-#include "TextCompiler.h"
+#include "idlib/AutoPtr.h"
+#include "idlib/LexerFactory.h"
+#include "idlib/TextCompiler.h"
 // jsinger: AutoCrit.h contains classes which aid in code synchronization
 //          AutoAcquire.h contains a class that aids in thread acquisition of the direct3D device for xenon
 //          Both compile out completely if the #define's above are not present
-#include "threads/AutoCrit.h"
+#include "idlib/threads/AutoCrit.h"
 // RAVEN END
 
 #endif	/* __cplusplus */

@@ -42,7 +42,7 @@ void idSIMD::Init( void ) {
 #ifdef _XENON
 	generic = new idSIMD_Xenon;
 #else
-	generic = new idSIMD_Generic;
+	generic = new idSIMD_SSE;
 	generic->cpuid = CPUID_GENERIC;
 #endif
 // RAVEN END
@@ -4112,27 +4112,8 @@ void idSIMD::Test_f( const idCmdArgs &args ) {
 	SetThreadPriority( GetCurrentThread(), THREAD_PRIORITY_TIME_CRITICAL );
 #endif // _WINDOWS
 
-	p_simd = processor;
 	p_generic = generic;
-
-	if ( idStr::Length( args.Argv( 1 ) ) != 0 ) {
-		cpuid_t cpuid = idLib::sys->GetProcessorId();
-		idStr argString = args.Args();
-
-		argString.Replace( " ", "" );
-
-		if (idStr::Icmp(argString, "GENERIC") == 0) {
-			if (!(cpuid & CPUID_GENERIC)) {
-				common->Printf("CPU does not support GENERIC\n");
-				return;
-			}
-			p_simd = new idSIMD_Generic();
-
-		} else {
-			common->Printf( "invalid argument, use: GENERIC\n" );
-			return;
-		}
-	}
+	p_simd = new idSIMD_SSE();
 
 	idLib::common->SetRefreshOnPrint( true );
 
