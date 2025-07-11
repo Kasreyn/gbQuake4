@@ -350,6 +350,7 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\$(PlatformName)\$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)-DEBUG</TargetName>
+    <CustomBuildAfterTargets Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">BuildLink</CustomBuildAfterTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug with inlines and memory log|Win32'">
     <Link>
@@ -414,6 +415,11 @@
       <ObjectFileName>$(IntDir)$(ProjectName)/</ObjectFileName>
       <ProgramDataBaseFileName>$(IntDir)$(ProjectName)/vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
     </ClCompile>
+    <CustomBuildStep>
+      <Command>cd $(ProjectDir)..\
+copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
+      <Outputs>gamex86.dll;%(Outputs)</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>

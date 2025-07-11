@@ -197,6 +197,9 @@
       <BaseAddress>0x20000000</BaseAddress>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
+    <CustomBuildStep>
+      <Command>copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

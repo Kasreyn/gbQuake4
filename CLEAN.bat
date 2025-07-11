@@ -10,5 +10,6 @@ del gbQuake4.exe
 del gbQuake4-DEBUG.exe
 del gbQuake4-DEBUG.ilk
 del gbQuake4-DEBUG.map
+del src\q4sdk.sdf
 
 pause
