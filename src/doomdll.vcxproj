@@ -67,7 +67,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>gbQuake4</ProjectName>
+    <ProjectName>DoomDLL</ProjectName>
     <ProjectGuid>{49BEC5C6-B964-417A-851E-808886B57420}</ProjectGuid>
     <RootNamespace>DoomDLL</RootNamespace>
     <SccProjectName>
@@ -345,10 +345,10 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_GOG|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_GOG|x64'" />
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../$(Platform)/$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\$(PlatformName)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\build\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\build\$(PlatformName)\$(Configuration)\intermediate\$(ProjectName)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\build\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\build\$(PlatformName)\$(Configuration)\intermediate\$(ProjectName)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)-DEBUG</TargetName>
     <CustomBuildAfterTargets Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">BuildLink</CustomBuildAfterTargets>
   </PropertyGroup>
@@ -403,7 +403,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Link>
       <AdditionalLibraryDirectories>openal\lib;sys\win32\dongle;C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <OutputFile>../$(ProjectName)-DEBUG.exe</OutputFile>
+      <OutputFile>$(OutDir)gbQuake4-DEBUG.exe</OutputFile>
     </Link>
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -411,13 +411,14 @@
     <ClCompile>
       <PrecompiledHeaderFile>precompiled.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AssemblerListingLocation>$(IntDir)$(ProjectName)/</AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)$(ProjectName)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(IntDir)$(ProjectName)/vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <PreprocessorDefinitions>STEAM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
     </ClCompile>
     <CustomBuildStep>
-      <Command>cd $(ProjectDir)..\
-copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
+      <Command>copy $(OutDir)gb-DEBUG-gamex86.dll $(OutDir)gamex86.dll</Command>
       <Outputs>gamex86.dll;%(Outputs)</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
@@ -508,7 +509,7 @@ copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Link>
       <AdditionalLibraryDirectories>openal\lib;sys\win32\dongle;C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <OutputFile>../gbQuake4.exe</OutputFile>
+      <OutputFile>$(OutDir)gbQuake4.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>nafxcw.lib;libcmt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -519,9 +520,10 @@ copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
       <PrecompiledHeaderFile>precompiled.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/idlib</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;STEAM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AssemblerListingLocation>$(IntDir)$(ProjectName)/</AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)$(ProjectName)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(IntDir)$(ProjectName)/vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <MinimalRebuild>true</MinimalRebuild>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_GOG|Win32'">
@@ -573,9 +575,14 @@ copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="aas\AASBuild_local.h" />
+    <ClInclude Include="aas\AASCluster.h" />
     <ClInclude Include="aas\AASFile.h" />
     <ClInclude Include="aas\AASFileManager.h" />
     <ClInclude Include="aas\AASFile_local.h" />
+    <ClInclude Include="aas\AASReach.h" />
+    <ClInclude Include="aas\Brush.h" />
+    <ClInclude Include="aas\BrushBSP.h" />
     <ClInclude Include="bse\BSE.h" />
     <ClInclude Include="bse\BSEInterface.h" />
     <ClInclude Include="bse\BSE_Envelope.h" />
@@ -700,6 +707,7 @@ copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
     <ClInclude Include="sound\OggVorbis\vorbis\vorbisfile.h" />
     <ClInclude Include="sound\OggVorbis\ogg\ogg.h" />
     <ClInclude Include="sound\OggVorbis\ogg\os_types.h" />
+    <ClInclude Include="sys\AutoVersion.h" />
     <ClInclude Include="sys\sys_local.h" />
     <ClInclude Include="sys\sys_public.h" />
     <ClInclude Include="sys\win32\win_local.h" />
@@ -726,6 +734,7 @@ copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
     <ClInclude Include="ui\GameBearShootWindow.h" />
     <ClInclude Include="ui\GameBustOutWindow.h" />
     <ClInclude Include="ui\GameSSDWindow.h" />
+    <ClInclude Include="ui\GameWindow.h" />
     <ClInclude Include="ui\GuiScript.h" />
     <ClInclude Include="ui\ListGUI.h" />
     <ClInclude Include="ui\ListGUILocal.h" />
@@ -733,6 +742,7 @@ copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
     <ClInclude Include="ui\MarkerWindow.h" />
     <ClInclude Include="ui\Rectangle.h" />
     <ClInclude Include="ui\RegExp.h" />
+    <ClInclude Include="ui\RegExp_old.h" />
     <ClInclude Include="ui\RenderWindow.h" />
     <ClInclude Include="ui\SimpleWindow.h" />
     <ClInclude Include="ui\SliderWindow.h" />
@@ -742,10 +752,17 @@ copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
     <ClInclude Include="ui\Winvar.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="aas\AASBuild_gravity.cpp" />
+    <ClCompile Include="aas\AASBuild_ledge.cpp" />
+    <ClCompile Include="aas\AASBuild_merge.cpp" />
+    <ClCompile Include="aas\AASCluster.cpp" />
     <ClCompile Include="aas\AASFile.cpp" />
     <ClCompile Include="aas\AASFileManager.cpp" />
     <ClCompile Include="aas\AASFile_optimize.cpp" />
     <ClCompile Include="aas\AASFile_sample.cpp" />
+    <ClCompile Include="aas\AASReach.cpp" />
+    <ClCompile Include="aas\Brush.cpp" />
+    <ClCompile Include="aas\BrushBSP.cpp" />
     <ClCompile Include="bse\BSE_EffectTemplate.cpp" />
     <ClCompile Include="bse\BSE_Manager.cpp" />
     <ClCompile Include="cm\CollisionModel.cpp" />
@@ -2168,6 +2185,7 @@ copy gb-DEBUG-gamex86.dll gamex86.dll</Command>
     <ClCompile Include="ui\GameBearShootWindow.cpp" />
     <ClCompile Include="ui\GameBustOutWindow.cpp" />
     <ClCompile Include="ui\GameSSDWindow.cpp" />
+    <ClCompile Include="ui\GameWindow.cpp" />
     <ClCompile Include="ui\GuiScript.cpp" />
     <ClCompile Include="ui\ListGUI.cpp" />
     <ClCompile Include="ui\ListWindow.cpp" />

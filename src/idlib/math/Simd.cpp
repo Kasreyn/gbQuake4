@@ -42,7 +42,7 @@ void idSIMD::Init( void ) {
 #ifdef _XENON
 	generic = new idSIMD_Xenon;
 #else
-	generic = new idSIMD_SSE;
+	generic = new idSIMD_Generic;
 	generic->cpuid = CPUID_GENERIC;
 #endif
 // RAVEN END

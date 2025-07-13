@@ -2,6 +2,8 @@
 #pragma hdrstop
 
 #include "../Game_local.h"
+//#include "framework/licensee.h"
+#define GAME_BUILD_TYPE					""
 
 #if defined( _DEBUG )
 	#define	BUILD_DEBUG	"-debug"

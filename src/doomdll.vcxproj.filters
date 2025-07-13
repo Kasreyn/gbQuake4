@@ -567,6 +567,30 @@
     <ClInclude Include="tools\compilers\dmap\dmap.h">
       <Filter>tools\compilers\dmap</Filter>
     </ClInclude>
+    <ClInclude Include="ui\GameWindow.h">
+      <Filter>Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\RegExp_old.h">
+      <Filter>Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="sys\AutoVersion.h">
+      <Filter>Sys</Filter>
+    </ClInclude>
+    <ClInclude Include="aas\AASBuild_local.h">
+      <Filter>AAS</Filter>
+    </ClInclude>
+    <ClInclude Include="aas\AASCluster.h">
+      <Filter>AAS</Filter>
+    </ClInclude>
+    <ClInclude Include="aas\AASReach.h">
+      <Filter>AAS</Filter>
+    </ClInclude>
+    <ClInclude Include="aas\Brush.h">
+      <Filter>AAS</Filter>
+    </ClInclude>
+    <ClInclude Include="aas\BrushBSP.h">
+      <Filter>AAS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cm\CollisionModel_contacts.cpp">
@@ -1237,6 +1261,30 @@
     </ClCompile>
     <ClCompile Include="tools\compilers\dmap\usurface.cpp">
       <Filter>tools\compilers\dmap</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\GameWindow.cpp">
+      <Filter>Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="aas\AASBuild_gravity.cpp">
+      <Filter>AAS</Filter>
+    </ClCompile>
+    <ClCompile Include="aas\AASBuild_ledge.cpp">
+      <Filter>AAS</Filter>
+    </ClCompile>
+    <ClCompile Include="aas\AASBuild_merge.cpp">
+      <Filter>AAS</Filter>
+    </ClCompile>
+    <ClCompile Include="aas\AASCluster.cpp">
+      <Filter>AAS</Filter>
+    </ClCompile>
+    <ClCompile Include="aas\AASReach.cpp">
+      <Filter>AAS</Filter>
+    </ClCompile>
+    <ClCompile Include="aas\Brush.cpp">
+      <Filter>AAS</Filter>
+    </ClCompile>
+    <ClCompile Include="aas\BrushBSP.cpp">
+      <Filter>AAS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
